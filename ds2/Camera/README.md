@@ -1,3 +1,4 @@
 - freecam and timefreeze: https://youtu.be/tq7-LfrrMkk 
 - Relative Camera Control: https://youtu.be/F8owklBIo7k
 - freecam char control: https://youtu.be/mL3tSlMPGr4
+- control timescale: https://youtu.be/Ny9tONiSLdw
