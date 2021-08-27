@@ -80,16 +80,36 @@ deadspace2.exe+36F39F: DD 05 28 7B AE 01        - fld qword ptr [deadspace2.exe+
       <CheatEntries>
         <CheatEntry>
           <ID>305</ID>
-          <Description>"timeFlow"</Description>
-          <LastState Value="0.00009999999747" RealAddress="01EC51F0"/>
+          <Description>"timescale (Ctrl + 7|8)"</Description>
+          <LastState Value="1" RealAddress="01EC51F0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>time</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>56</Key>
+              </Keys>
+              <Value>0.25</Value>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>55</Key>
+              </Keys>
+              <Value>0.25</Value>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
         </CheatEntry>
         <CheatEntry>
           <ID>374</ID>
-          <Description>"timeStomp (Ctrl + Num *)"</Description>
-          <LastState Activated="1"/>
+          <Description>"timefreeze (Ctrl + 0)"</Description>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
@@ -107,7 +127,7 @@ dd (float)1
               <Action>Toggle Activation</Action>
               <Keys>
                 <Key>17</Key>
-                <Key>106</Key>
+                <Key>48</Key>
               </Keys>
               <ID>0</ID>
             </Hotkey>
@@ -117,9 +137,9 @@ dd (float)1
     </CheatEntry>
     <CheatEntry>
       <ID>368</ID>
-      <Description>"Free Cam (Ctrl+Num0)"</Description>
+      <Description>"Free Cam (Alt+Num0)"</Description>
       <Options moHideChildren="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : deadspace2.exe
   Version: 
@@ -190,7 +210,7 @@ deadspace2.exe+44C01D: F3 0F 10 4C 24 10        - movss xmm1,[esp+10]
         <Hotkey>
           <Action>Toggle Activation</Action>
           <Keys>
-            <Key>17</Key>
+            <Key>18</Key>
             <Key>96</Key>
           </Keys>
           <ID>0</ID>
@@ -200,7 +220,7 @@ deadspace2.exe+44C01D: F3 0F 10 4C 24 10        - movss xmm1,[esp+10]
         <CheatEntry>
           <ID>369</ID>
           <Description>"X (Alt+Num4|6)"</Description>
-          <LastState Value="97.37355042" RealAddress="075CEC20"/>
+          <LastState Value="93.80799103" RealAddress="2C848DD0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>camPosBase</Address>
@@ -232,7 +252,7 @@ deadspace2.exe+44C01D: F3 0F 10 4C 24 10        - movss xmm1,[esp+10]
             <CheatEntry>
               <ID>370</ID>
               <Description>"H (Alt+Num8|2)"</Description>
-              <LastState Value="-28.87877464" RealAddress="075CEC24"/>
+              <LastState Value="-30.08282661" RealAddress="2C848DD4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+4</Address>
@@ -260,7 +280,7 @@ deadspace2.exe+44C01D: F3 0F 10 4C 24 10        - movss xmm1,[esp+10]
             <CheatEntry>
               <ID>371</ID>
               <Description>"Y (Alt+Num+|-)"</Description>
-              <LastState Value="-364.4068298" RealAddress="075CEC28"/>
+              <LastState Value="-367.6761169" RealAddress="2C848DD8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+8</Address>
@@ -351,7 +371,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
         <CheatEntry>
           <ID>391</ID>
           <Description>"FOV"</Description>
-          <LastState Value="1.221730471" RealAddress="1F6DA7C4"/>
+          <LastState Value="1.221730471" RealAddress="2C45D684"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>ptrBase-4c</Address>
@@ -372,7 +392,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>393</ID>
                   <Description>"Z1"</Description>
-                  <LastState Value="2" RealAddress="1F6DA7C8"/>
+                  <LastState Value="2" RealAddress="2C45D688"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+4</Address>
@@ -400,7 +420,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>394</ID>
                   <Description>"Z2"</Description>
-                  <LastState Value="2" RealAddress="1F6DA7CC"/>
+                  <LastState Value="2" RealAddress="2C45D68C"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+8</Address>
@@ -430,7 +450,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
             <CheatEntry>
               <ID>398</ID>
               <Description>"camHeight1 (Ctrl+Num8|2)"</Description>
-              <LastState Value="2.100000143" RealAddress="1F6DA7D8"/>
+              <LastState Value="1.350000024" RealAddress="2C45D698"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+14</Address>
@@ -465,7 +485,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>402</ID>
                   <Description>"CO1"</Description>
-                  <LastState Value="0.3999999762" RealAddress="1F6DA7E4"/>
+                  <LastState Value="-0.6000000238" RealAddress="2C45D6A4"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+20</Address>
@@ -493,7 +513,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>403</ID>
                   <Description>"CO2"</Description>
-                  <LastState Value="0.4499999881" RealAddress="1F6DA7E8"/>
+                  <LastState Value="-0.5500000119" RealAddress="2C45D6A8"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+24</Address>
@@ -521,7 +541,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>404</ID>
                   <Description>"CO3"</Description>
-                  <LastState Value="0.4499999881" RealAddress="1F6DA7EC"/>
+                  <LastState Value="-0.5500000119" RealAddress="2C45D6AC"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+28</Address>
@@ -551,7 +571,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
             <CheatEntry>
               <ID>405</ID>
               <Description>"Pivot Distance (Ctrl+Num3|9)"</Description>
-              <LastState Value="0.400000006" RealAddress="1F6DA7F0"/>
+              <LastState Value="0.400000006" RealAddress="2C45D6B0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+2C</Address>
@@ -586,7 +606,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>410</ID>
                   <Description>"Max Vertical Rotation"</Description>
-                  <LastState Value="1.04719758" RealAddress="1F6DA7FC"/>
+                  <LastState Value="1.04719758" RealAddress="2C45D6BC"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+38</Address>
@@ -594,7 +614,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>411</ID>
                   <Description>"A1"</Description>
-                  <LastState Value="1.04719758" RealAddress="1F6DA800"/>
+                  <LastState Value="1.04719758" RealAddress="2C45D6C0"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+3C</Address>
@@ -602,7 +622,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>412</ID>
                   <Description>"A2"</Description>
-                  <LastState Value="-0.1134463996" RealAddress="1F6DA804"/>
+                  <LastState Value="-0.1134463996" RealAddress="2C45D6C4"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+40</Address>
@@ -612,7 +632,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
             <CheatEntry>
               <ID>413</ID>
               <Description>"Height #3 (try &lt; 0)"</Description>
-              <LastState Value="0.8249999881" RealAddress="1F6DA808"/>
+              <LastState Value="0.8249999881" RealAddress="2C45D6C8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+44</Address>
@@ -620,7 +640,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
             <CheatEntry>
               <ID>395</ID>
               <Description>"camHeight2"</Description>
-              <LastState Value="2" RealAddress="1F6DA7E0"/>
+              <LastState Value="2" RealAddress="2C45D6A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+1C</Address>
@@ -635,7 +655,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>396</ID>
                   <Description>"unk"</Description>
-                  <LastState Value="1.396263361" RealAddress="1F6DA7D0"/>
+                  <LastState Value="1.396263361" RealAddress="2C45D690"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+C</Address>
@@ -643,7 +663,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>397</ID>
                   <Description>"unk"</Description>
-                  <LastState Value="2" RealAddress="1F6DA7D4"/>
+                  <LastState Value="2" RealAddress="2C45D694"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+10</Address>
@@ -651,7 +671,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>399</ID>
                   <Description>"unk"</Description>
-                  <LastState Value="1.200000048" RealAddress="1F6DA7DC"/>
+                  <LastState Value="1.200000048" RealAddress="2C45D69C"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+18</Address>
@@ -659,7 +679,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>406</ID>
                   <Description>"unk (~pi)"</Description>
-                  <LastState Value="3.141592741" RealAddress="1F6DA7F4"/>
+                  <LastState Value="3.141592741" RealAddress="2C45D6B4"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+30</Address>
@@ -667,7 +687,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>407</ID>
                   <Description>"unk (~pi) #2"</Description>
-                  <LastState Value="3.141592741" RealAddress="1F6DA7F8"/>
+                  <LastState Value="3.141592741" RealAddress="2C45D6B8"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+34</Address>
@@ -675,7 +695,7 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
                 <CheatEntry>
                   <ID>381</ID>
                   <Description>"unk"</Description>
-                  <LastState Value="2" RealAddress="1F6DA7C8"/>
+                  <LastState Value="2" RealAddress="2C45D688"/>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+4</Address>
@@ -686,8 +706,8 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
         </CheatEntry>
         <CheatEntry>
           <ID>380</ID>
-          <Description>"charSize"</Description>
-          <LastState Value="1.817999959" RealAddress="1797AD68"/>
+          <Description>"charSize (Ctrl+PgUp|Dn)"</Description>
+          <LastState Value="2.517999411" RealAddress="1F9D13F8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>ptrBase</Address>
@@ -696,6 +716,26 @@ deadspace2.exe+353BF9: E8 F2 AE C4 00                 - call deadspace2.exe+F9EA
             <Offset>0</Offset>
             <Offset>28</Offset>
           </Offsets>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>33</Key>
+              </Keys>
+              <Value>0.1</Value>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>34</Key>
+              </Keys>
+              <Value>0.1</Value>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
