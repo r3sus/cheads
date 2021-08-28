@@ -2,9 +2,9 @@
 <CheatTable CheatEngineTableVersion="38">
   <CheatEntries>
     <CheatEntry>
-      <ID>361</ID>
+      <ID>400</ID>
       <Description>"0g (Ctrl + 0)"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : deadspace2.exe
   Version: 
@@ -17,7 +17,7 @@
 [ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
 
- 
+// enable 0g
  
 aobscanmodule(0g,deadspace2.exe,F3 0F 5E E1 0F C6 E4 00 0F 59 EC) // should be unique
 
@@ -28,13 +28,22 @@ db 00
 
 registersymbol(0g)
 
+// find flag
+
+aobscanmodule(fl0g,deadspace2.exe,83 E4 F0 83 EC 54 53 56 57 8B 3D) // should be unique
+
+define(fl0g,[fl0g+B])
+
+registersymbol(fl0g)
+
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 
 0g:
 db 01
 
-unregistersymbol(0g)
+//unregistersymbol(0g)
+
 
 {
 // ORIGINAL CODE - INJECTION POINT: deadspace2.exe+B7283D
@@ -76,9 +85,21 @@ deadspace2.exe+B7286D: EB 5D                    - jmp deadspace2.exe+B728CC
       </Hotkeys>
       <CheatEntries>
         <CheatEntry>
-          <ID>362</ID>
-          <Description>"No description"</Description>
-          <LastState Value="00" RealAddress="00F72843"/>
+          <ID>401</ID>
+          <Description>"flag"</Description>
+          <LastState Value="33" RealAddress="26121D54"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>fl0g</Address>
+          <Offsets>
+            <Offset>144</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>402</ID>
+          <Description>""</Description>
+          <LastState Value="01" RealAddress="00F72843"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
