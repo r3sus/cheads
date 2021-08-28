@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="38">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>361</ID>
+      <Description>"0g (Ctrl + 0)"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : deadspace2.exe
+  Version: 
+  Date   : 2021-08-28
+  Author : user
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(0g,deadspace2.exe,F3 0F 5E E1 0F C6 E4 00 0F 59 EC) // should be unique
+
+define(0g,0g-13)
+
+0g:
+db 00
+
+registersymbol(0g)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+0g:
+db 01
+
+unregistersymbol(0g)
+
+{
+// ORIGINAL CODE - INJECTION POINT: deadspace2.exe+B7283D
+
+deadspace2.exe+B727FF: F3 0F 11 9E 34 01 00 00  - movss [esi+00000134],xmm3
+deadspace2.exe+B72807: F3 0F 11 9E 30 01 00 00  - movss [esi+00000130],xmm3
+deadspace2.exe+B7280F: 83 8E 44 01 00 00 02     - or dword ptr [esi+00000144],02
+deadspace2.exe+B72816: 0F 2F CA                 - comiss xmm1,xmm2
+deadspace2.exe+B72819: 8B 86 44 01 00 00        - mov eax,[esi+00000144]
+deadspace2.exe+B7281F: F3 0F 11 9E 40 01 00 00  - movss [esi+00000140],xmm3
+deadspace2.exe+B72827: 0F 82 A5 00 00 00        - jb deadspace2.exe+B728D2
+deadspace2.exe+B7282D: 83 C8 08                 - or eax,08
+deadspace2.exe+B72830: E9 97 00 00 00           - jmp deadspace2.exe+B728CC
+deadspace2.exe+B72835: F3 0F 10 25 D0 4E AA 01  - movss xmm4,[deadspace2.exe+16A4ED0]
+// ---------- INJECTING HERE ----------
+deadspace2.exe+B7283D: 83 8E 44 01 00 00 01     - or dword ptr [esi+00000144],01
+// ---------- DONE INJECTING  ----------
+deadspace2.exe+B72844: 0F 2F 54 24 1C           - comiss xmm2,[esp+1C]
+deadspace2.exe+B72849: 0F 28 AE 20 01 00 00     - movaps xmm5,[esi+00000120]
+deadspace2.exe+B72850: 8B 86 44 01 00 00        - mov eax,[esi+00000144]
+deadspace2.exe+B72856: F3 0F 5E E1              - divss xmm4,xmm1
+deadspace2.exe+B7285A: 0F C6 E4 00              - shufps xmm4,xmm4,00
+deadspace2.exe+B7285E: 0F 59 EC                 - mulps xmm5,xmm4
+deadspace2.exe+B72861: 0F 29 AE 30 01 00 00     - movaps [esi+00000130],xmm5
+deadspace2.exe+B72868: 76 05                    - jna deadspace2.exe+B7286F
+deadspace2.exe+B7286A: 83 C8 04                 - or eax,04
+deadspace2.exe+B7286D: EB 5D                    - jmp deadspace2.exe+B728CC
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>48</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>362</ID>
+          <Description>"No description"</Description>
+          <LastState Value="00" RealAddress="00F72843"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>0g</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
