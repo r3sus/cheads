@@ -2,6 +2,7 @@
 Remove free award items from store.
 Script has 3 options: NG, HC, NG+.
 Place anywhere, right click, open with Powershell. 
+Use before launching the game.
 
 There are several free item awards obtained by completing game, on hardcore, and so on. These are not allowed for use in runs, except NG+. In order to prevent their use by accident and ease navigation in the shop menu, they can be removed.
 
