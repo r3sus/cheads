@@ -1,6 +1,8 @@
 # DS2 Award Items Management
-Remove free award items from store.
-Script has 3 options: NG, HC, NG+.
+Powershell Script to remove free award items like Soldier Suit from store to ease menuing. 
+3 options: NG, HC, NG+.
+
+Simple to use:
 Place anywhere, right click, open with Powershell. 
 Use before launching the game.
 
