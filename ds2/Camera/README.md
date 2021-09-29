@@ -11,3 +11,5 @@ Functions:
 - Change char size: https://youtu.be/xVOku1KEnOE
 
 - Adjust flow of time: https://youtu.be/Ny9tONiSLdw
+
+- fly mode (0g anywhere) https://youtu.be/UNZ0lD_XHoU
