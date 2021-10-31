@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>219</ID>
+      <Description>"Compact Mode"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+LuaCall(function cycleFullCompact(sender,force) local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible    = state; getMainForm().Panel5.Visible    = state; end; function addCompactMenu() if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+LuaCall(cycleFullCompact(nil,false))
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"cp_aob"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : deadspace3.exe
+  Version: 
+  Date   : 2021-02-10
+  Author : ����
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(cp_writer,deadspace3.exe,89 0D xxxxxxxx 8B 48 04 89 0D) // should be unique
+
+registersymbol(cp_writer)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+unregistersymbol(cp_writer)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 005B4123
+
+005B4100: 75 21              - jne 005B4123
+005B4102: 8B 15 EC DA 1E 01  - mov edx,[011EDAEC]
+005B4108: 3B 50 04           - cmp edx,[eax+04]
+005B410B: 75 16              - jne 005B4123
+005B410D: 8B 15 F0 DA 1E 01  - mov edx,[011EDAF0]
+005B4113: 3B 50 08           - cmp edx,[eax+08]
+005B4116: 75 0B              - jne 005B4123
+005B4118: 8B 15 F4 DA 1E 01  - mov edx,[011EDAF4]
+005B411E: 3B 50 0C           - cmp edx,[eax+0C]
+005B4121: 74 7F              - je 005B41A2
+// ---------- INJECTING HERE ----------
+005B4123: 89 0D E8 DA 1E 01  - mov [011EDAE8],ecx
+// ---------- DONE INJECTING  ----------
+005B4129: 8B 48 04           - mov ecx,[eax+04]
+005B412C: 89 0D EC DA 1E 01  - mov [011EDAEC],ecx
+005B4132: 8B 50 08           - mov edx,[eax+08]
+005B4135: 89 15 F0 DA 1E 01  - mov [011EDAF0],edx
+005B413B: 8B 48 0C           - mov ecx,[eax+0C]
+005B413E: 89 0D F4 DA 1E 01  - mov [011EDAF4],ecx
+005B4144: 50                 - push eax
+005B4145: 8D 4D D4           - lea ecx,[ebp-2C]
+005B4148: E8 D3 5D 4F 00     - call 00AA9F20
+005B414D: 8D 4D EC           - lea ecx,[ebp-14]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"No description"</Description>
+          <LastState Value="74 E7 23 33 60 49 6F AF 50 52 49 43 45 32 30 36" RealAddress="011EDAE8"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>16</ByteLength>
+          <Address>cp_writer+2</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>48</Key>
+              </Keys>
+              <Value>11 75 90 33 9C 62 27 E3 50 52 49 43 45 32 30 36</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>220</ID>
+      <Description>"cp_static"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address/>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
