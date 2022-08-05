@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1104</ID>
+      <Description>"Interface"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"Show in D3D"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+{$Lua}
+MainForm.miZbuffer.Visible = true
+MainForm.miWireframe.Visible = true
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+{$Lua}
+MainForm.miZbuffer.Visible = false
+MainForm.miWireframe.Visible = false
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1102</ID>
+          <Description>"always show"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+{$Lua}
+local x = {}
+x[1] = getAutorunPath()
+x[2] = x[1]..'/d3d+.lua'
+x[3] = io.open(x[2],'w')
+x[4] = [[
+MainForm.miZbuffer.Visible = true
+MainForm.miWireframe.Visible = true
+]]
+x[3]:write(x[4])
+x[3]:close()
+loadstring(x[4])()
+--dofile(x[2])
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+{$Lua}
+os.remove(getAutorunPath()..'/d3d+.lua')
+MainForm.miZbuffer.Visible = false
+MainForm.miWireframe.Visible = false
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1099</ID>
+      <Description>"d3d"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1098</ID>
+          <Description>"WireframeMode"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$Lua}
+if not f1 then f1 = createD3DHook() end
+f1.WireframeMode = 1
+
+[DISABLE]
+{$Lua}
+f1.WireframeMode = nil
+
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys/>
+              <Description>double click and set hotkey</Description>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1097</ID>
+          <Description>"DisableZBuffer (Ctrl + Num 5)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$Lua}
+if not f1 then f1 = createD3DHook() end
+f1.DisabledZBuffer = 1
+
+[DISABLE]
+{$Lua}
+f1.DisabledZBuffer = nil
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>101</Key>
+              </Keys>
+              <Description>double click and set hotkey</Description>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1103</ID>
+          <Description>"to set hotkey Ctrl + H on entry"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1100</ID>
+      <Description>"old"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"hook"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+{$Lua}
+if not MainForm.miSetCrosshair.Enabled then
+MainForm.miHookD3D.doClick()
+end
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+{$Lua}
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Wireframe"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+{$Lua}
+MainForm.miWireframe.doClick()
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+{$Lua}
+MainForm.miWireframe.doClick()
+
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1093</ID>
+          <Description>"d3d"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$Lua}
+f1 = createD3DHook(nil, nil)
+
+[DISABLE]
+{$Lua}
+--f1 = nil
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1094</ID>
+              <Description>"DisabledZBuffer"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$Lua}
+f1.DisabledZBuffer = 1
+
+[DISABLE]
+{$Lua}
+f1.DisabledZBuffer = nil
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1095</ID>
+              <Description>"WireframeMode"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$Lua}
+f1.WireframeMode = 1
+
+[DISABLE]
+{$Lua}
+f1.WireframeMode = nil
+
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1101</ID>
+          <Description>"always show"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+{$Lua}
+local x = {}
+x[1] = getAutorunPath()
+x[2] = x[1]..'/d3d+.lua'
+x[3] = io.open(x[2],'w')
+x[4] = [[MainForm.miZbuffer.Visible = true
+MainForm.miWireframe.Visible = true]]
+x[3]:write(x[4])
+x[3]:close()
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+{$Lua}
+os.remove(getAutorunPath()..'/d3d+.lua')
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
