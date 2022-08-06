@@ -57,10 +57,19 @@ MainForm.miWireframe.Visible = false
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>1099</ID>
+      <ID>1105</ID>
       <Description>"d3d"</Description>
-      <LastState Value="" RealAddress="00000000"/>
-      <GroupHeader>1</GroupHeader>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$Lua}
+if not f1 then f1 = createD3DHook() end
+
+[DISABLE]
+{$Lua}
+f1 = nil
+</AssemblerScript>
       <CheatEntries>
         <CheatEntry>
           <ID>1098</ID>
