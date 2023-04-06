@@ -1,0 +1,108 @@
+enum <uint> ActionCode_Enum {
+// 00 | ZeroGJump | 0x020 | sc_controlLeft | 
+ZeroGJump = 0x00CD5924,
+// 01 | Journal | 0x034 | sc_j | 
+Journal = 0x02EDB830,
+// 02 | MapZoomIn | 0x048 | sc_z | WheelUp | 
+MapZoomIn = 0x07DACB8B,
+// 03 | MoveLeft | 0x05C | sc_a | 
+MoveLeft = 0x1A271621,
+// 04 | Use | 0x070 | sc_e | 
+Use = 0x1E02397C,
+// 05 | WepSlot3 | 0x084 | sc_3 | 
+WepSlot3 = 0x20779451,
+// 06 | MouseModifier | 0x098 | sc_altLeft | MiddleMB | 
+MouseModifier = 0x402C0853,
+// 07 | MoveBack | 0x0AC | sc_s | 
+MoveBack = 0x46E7AFE1,
+// 08 | Fire | 0x0C0 | sc_q | noMB | LeftMB | 
+Fire = 0x54A314DF,
+// 09 | MapZoomOut | 0x0D4 | sc_x | 
+MapZoomOut = 0x5A5AC208,
+// 10 | Reload | 0x0E8 | sc_r | 
+Reload = 0x62B07722,
+// 11 | AltFire | 0x0FC | sc_space | MiddleMB | 
+AltFire = 0x690EAD4B,
+// 12 | 0x6B33E8D0 | 0x110 | prim: 0x00 | LeftMB | 
+unk_LMB = 0x6B33E8D0,
+// 13 | Stasis | 0x124 | sc_c | 
+Stasis = 0x75EBB146,
+// 14 | Heal | 0x138 | sc_z | 
+Heal = 0x76730C00,
+// 15 | MoveFwd | 0x14C | sc_w | sc_o | 
+MoveFwd = 0x8C036AAB,
+// 16 | Breadcrumbs | 0x160 | sc_b | 
+Breadcrumbs = 0x98DB2087,
+// 17 | 0x9CADD533 | 0x174 | prim: 0x00 | RightMB | 
+unk_RMB = 0x9CADD533,
+// 18 | Kinesis | 0x188 | sc_f | 
+Kinesis = 0xAA53F6AC,
+// 19 | WepSlot2 | 0x19C | sc_2 | 
+WepSlot2 = 0xB13EAD8C,
+// 20 | Punch | 0x1B0 | sc_t | noMB | LeftMB | 
+Punch = 0xBC9463C5,
+// 21 | Stomp | 0x1C4 | sc_x | WheelDn | 
+Stomp = 0xBD5E7668,
+// 22 | WepSlot1 | 0x1D8 | sc_1 | 
+WepSlot1 = 0xC5126E85,
+// 23 | Aim | 0x1EC | prim: 0xDD | RightMB | 
+Aim = 0xD177DF7C,
+// 24 | Cancel | 0x200 | sc_f | 
+Cancel = 0xD4C6DB97,
+// 25 | Log_DB | 0x214 | sc_l | 
+Log_DB = 0xD6E88B7B,
+// 26 | Map | 0x228 | sc_m | 
+Map = 0xD7589793,
+// 27 | MoveRight | 0x23C | sc_d | 
+MoveRight = 0xD7D6FC22,
+// 28 | RIG | 0x250 | sc_tab | 
+RIG = 0xD9D6E707,
+// 29 | Sprint | 0x264 | sc_shiftLeft | sc_shiftRight | 
+Sprint = 0xD9E2EA02,
+// 30 | Inventory | 0x278 | sc_i | 
+Inventory = 0xDC724D13,
+// 31 | WepSlot4 | 0x28C | sc_4 | 
+WepSlot4 = 0xE3D609F2,
+// 32 | AimToggle | 0x2A0 | sc_capsLock | 
+AimToggle = 0xE8C71D48,
+// DS2:
+
+WepCycleUp = 0x00794A75,
+WepCycleDown = 0xE716917C,
+
+AlignZG = 0x2BF7E09C,
+
+Vent_Necr = 0x2C1DE8EE,
+Grapple_Necr = 0x30056330,
+SecAtk_Necr = 0x4365D31D,
+JumpSprint_Necr = 0xD5138767,
+WallWalk_Necr = 0x7DC6B946,
+
+//UnkV = 0x20DFB8C3,
+//UnkF = 0x51476CB2,
+//UnkF_2 = 0x5D8E30E3,
+//UnkC = 0x689C34A1,
+
+Respec = 0x7DC6B946, 
+
+QuickStasis = 0x689C34A1,
+
+Cancel_DS2 = 0x5D8E30E3,
+PrevMenu = 0x8648145A,
+NextMenu = 0x722E8C29,
+
+CursorLeft = 0x51374386, 
+CursorUp = 0xB0BDA83A, 
+CursorRight = 0x923727FD, 
+CursorDown = 0xE1FE5CC1,
+
+//DS3:
+Crouch = 0x17A26743,
+Roll = 0x75A1C05A,
+ScavengerBots = 0x82A83FBD,
+Sprint_DS3 = 0xA439EFED,
+Construct = 0x4F615A0E,
+Share = 0x25292136,
+
+
+};

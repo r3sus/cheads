@@ -1,0 +1,98 @@
+//------------------------------------------------
+//--- 010 Editor v12.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+#include <ScancodeEnum.bt>
+#include <ActionCodeEnum.bt>
+
+local ubyte DS1 = 0, i = 0;
+
+struct {
+char magic[4]; Assert(magic == "RCAE");
+int eq2 <hidden=true>; Assert(eq2 == 2);
+int sz; if (sz==0x21) DS1 = 1;
+int h_unk[4] <hidden=true>;
+if (DS1)
+ Assert(h_unk[1] == 0xC && h_unk[2] == 0xC);
+else 
+ for(i = 0; i < 4; i++)
+  Assert(h_unk[i] == 0);
+
+} Header;
+
+enum <ubyte> MouseButton_Enum {
+LeftMB	 = 0x0,
+RightMB	 = 0x1, 
+MiddleMB = 0x2,
+WheelUp	 = 0x3,
+WheelDn	 = 0x4,
+noMB     = 0xFF,
+};
+
+enum <ubyte> bool {
+No = 0x0,
+Yes	 = 0x1,
+};
+
+i = 0;
+
+typedef struct bindEntry
+{
+SetForeColor( cNone );
+ActionCode_Enum Action;
+ 
+if (EnumToString(Action) == "") {
+SetForeColor( cRed );
+Printf("%i = 0x%08X, \n", i, Action);
+}
+
+Scancode_Enum KeyBindPrim;
+Scancode_Enum KeyBindAlt;
+
+// !DS1
+ubyte b1 <hidden=true>; // == EKB + 0x80
+if (b1 != 0xFF)
+{
+Scancode_Enum ExtraKeyBind; // numpad
+Assert(b1 == ExtraKeyBind + 0x80);
+}
+else FSkip(1);
+
+int unk <hidden=true>;
+
+if (DS1)
+ Assert(unk == 0xFF);
+else
+ Assert(unk == 0x000300FF);
+
+bool allowMouseBinds;
+MouseButton_Enum MouseButtonPrim; 
+if (DS1) 
+{
+Assert(ReadByte() == 0);
+FSkip(1);
+}
+else
+MouseButton_Enum MouseButtonAlt;
+
+struct {
+ubyte b2; Assert(b2 == 0);
+int i1; Assert(i1 == 0);
+} null1 <hidden=true>;
+
+i++;
+
+}; 
+
+
+bindEntry binds[Header.sz] 
+<optimize=false> 
+;

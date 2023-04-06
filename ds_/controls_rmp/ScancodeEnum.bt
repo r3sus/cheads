@@ -1,0 +1,190 @@
+//------------------------------------------------
+//--- 010 Editor v12.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+enum <ubyte> Scancode_Enum {
+None_FF_SC = 0xFF,
+None_00_SC = 0x00,
+//Unk_DD_SC = 0xDD,
+	Escape_SC = 0x01,
+	d1_SC = 0x02,
+	d2_SC = 0x03,
+	d3_SC = 0x04,
+	d4_SC = 0x05,
+	d5_SC = 0x06,
+	d6_SC = 0x07,
+	d7_SC = 0x08,
+	d8_SC = 0x09,
+	d9_SC = 0x0A,
+	d0_SC = 0x0B,
+	Minus_SC = 0x0C,
+	Equals_SC = 0x0D,
+	Backspace_SC = 0x0E,
+	Tab_SC = 0x0F,
+	Q_SC = 0x10,
+	W_SC = 0x11,
+	E_SC = 0x12,
+	R_SC = 0x13,
+	T_SC = 0x14,
+	Y_SC = 0x15,
+	U_SC = 0x16,
+	I_SC = 0x17,
+	O_SC = 0x18,
+	P_SC = 0x19,
+	BracketLeft_SC = 0x1A,
+	BracketRight_SC = 0x1B,
+	Enter_SC = 0x1C,
+	ControlLeft_SC = 0x1D,
+	A_SC = 0x1E,
+	S_SC = 0x1F,
+	D_SC = 0x20,
+	F_SC = 0x21,
+	G_SC = 0x22,
+	H_SC = 0x23,
+	J_SC = 0x24,
+	K_SC = 0x25,
+	L_SC = 0x26,
+	Semicolon_SC = 0x27,
+	Apostrophe_SC = 0x28,
+	Grave_SC = 0x29,
+	ShiftLeft_SC = 0x2A,
+	Backslash_SC = 0x2B,
+	Z_SC = 0x2C,
+	X_SC = 0x2D,
+	C_SC = 0x2E,
+	V_SC = 0x2F,
+	B_SC = 0x30,
+	N_SC = 0x31,
+	M_SC = 0x32,
+	Comma_SC = 0x33,
+	Preiod_SC = 0x34,
+	Slash_SC = 0x35,
+	ShiftRight_SC = 0x36,
+	Numpad_Multiply_SC = 0x37,
+	AltLeft_SC = 0x38,
+	Space_SC = 0x39,
+	CapsLock_SC = 0x3A,
+	F1_SC = 0x3B,
+	F2_SC = 0x3C,
+	F3_SC = 0x3D,
+	F4_SC = 0x3E,
+	F5_SC = 0x3F,
+	F6_SC = 0x40,
+	F7_SC = 0x41,
+	F8_SC = 0x42,
+	F9_SC = 0x43,
+	F10_SC = 0x44,
+	NumLock_SC = 0x45,
+	ScrollLock_SC = 0x46,
+	Numpad_7_SC = 0x47,
+	Numpad_8_SC = 0x48,
+	Numpad_9_SC = 0x49,
+	Numpad_Minus_SC = 0x4A,
+	Numpad_4_SC = 0x4B,
+	Numpad_5_SC = 0x4C,
+	Numpad_6_SC = 0x4D,
+	Numpad_Plus_SC = 0x4E,
+	Numpad_1_SC = 0x4F,
+	Numpad_2_SC = 0x50,
+	Numpad_3_SC = 0x51,
+	Numpad_0_SC = 0x52,
+	Numpad_Period_SC = 0x53,
+	Alt_PrintScreen_SC = 0x54, /* Alt + print screen. MapVirtualKeyEx( VK_SNAPSHOT, MAPVK_VK_TO_VEX_SC, 0 ) returns scancode 0x54. */
+	BracketAngle_SC = 0x56, /* Key between the left shift and Z. */
+	F11_SC = 0x57,
+	F12_SC = 0x58,
+	Oem_1_SC = 0x5a, /* VK_OEM_WSCTRL */
+	Oem_2_SC = 0x5b, /* VK_OEM_FINISH */
+	Oem_3_SC = 0x5c, /* VK_OEM_JUMP */
+	EraseEOF_SC = 0x5d,
+	Oem_4_SC = 0x5e, /* VK_OEM_BACKTAB */
+	Oem_5_SC = 0x5f, /* VK_OEM_AUTO */
+	Zoom_SC = 0x62,
+	Help_SC = 0x63,
+	F13_SC = 0x64,
+	F14_SC = 0x65,
+	F15_SC = 0x66,
+	F16_SC = 0x67,
+	F17_SC = 0x68,
+	F18_SC = 0x69,
+	F19_SC = 0x6a,
+	F20_SC = 0x6b,
+	F21_SC = 0x6c,
+	F22_SC = 0x6d,
+	F23_SC = 0x6e,
+	Oem_6_SC = 0x6f, /* VK_OEM_PA3 */
+	Katakana_SC = 0x70,
+	Oem_7_SC = 0x71, /* VK_OEM_RESET */
+	F24_SC = 0x76,
+	Sbcschar_SC = 0x77,
+	Convert_SC = 0x79,
+	Nonconvert_SC = 0x7B, /* VK_OEM_PA1 */
+
+	Media_Previous_SC = 0xE010,
+	Media_Next_SC = 0xE019,
+	Numpad_Enter_SC = 0xE01C,
+	ControlRight_SC = 0xE01D,
+	Volume_Mute_SC = 0xE020,
+	Launch_App2_SC = 0xE021,
+	Media_Play_SC = 0xE022,
+	Media_Stop_SC = 0xE024,
+	Volume_Down_SC = 0xE02E,
+	Volume_Up_SC = 0xE030,
+	Browser_Home_SC = 0xE032,
+	Numpad_Divide_SC = 0xE035,
+	PrintScreen_SC = 0xE037,
+	/*
+	PrintScreen_SC:
+	- make: 0xE02A 0xE037
+	- break: 0xE0B7 0xE0AA
+	- MapVirtualKeyEx( VK_SNAPSHOT, MAPVK_VK_TO_VEX_SC, 0 ) returns scancode 0x54;
+	- There is no VK_KEYDOWN with VK_SNAPSHOT.
+	*/
+	AltRight_SC = 0xE038,
+	Cancel_SC = 0xE046, /* CTRL + Pause */
+	Home_SC = 0xE047,
+	ArrowUp_SC = 0xE048,
+	PageUp_SC = 0xE049,
+	ArrowLeft_SC = 0xE04B,
+	ArrowRight_SC = 0xE04D,
+	End_SC = 0xE04F,
+	ArrowDown_SC = 0xE050,
+	PageDown_SC = 0xE051,
+	Insert_SC = 0xE052,
+	Delete_SC = 0xE053,
+	MetaLeft_SC = 0xE05B,
+	MetaRight_SC = 0xE05C,
+	Application_SC = 0xE05D,
+	Power_SC = 0xE05E,
+	Sleep_SC = 0xE05F,
+	Wake_SC = 0xE063,
+	Browser_Search_SC = 0xE065,
+	Browser_Favorites_SC = 0xE066,
+	Browser_Refresh_SC = 0xE067,
+	Browser_Stop_SC = 0xE068,
+	Browser_Forward_SC = 0xE069,
+	Browser_Back_SC = 0xE06A,
+	Launch_App1_SC = 0xE06B,
+	Launch_Email_SC = 0xE06C,
+	Launch_Media_SC = 0xE06D,
+
+//	Pause_SC = 0xE11d4_SC5,
+	/*
+	Pause_SC:
+	- make: 0xE11D 45 0xE19D C5
+	- make in raw input: 0xE11D 0x45
+	- break: none
+	- No repeat when you hold the key down
+	- There are no break so I don't know how the key down/up is expected to work. Raw input sends "keydown" and "keyup" messages, and it appears that the keyup message is sent directly after the keydown message (you can't hold the key down) so depending on when GetMessage or PeekMessage will return messages, you may get both a keydown and keyup message "at the same time". If you use VK messages most of the time you only get keydown messages, but some times you get keyup messages too.
+	- when pressed at the same time as one or both control keys, generates a 0xE046 (Cancel_SC) and the string for that scancode is "break".
+	*/
+};
