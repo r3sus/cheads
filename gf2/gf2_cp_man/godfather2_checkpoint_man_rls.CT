@@ -97,6 +97,7 @@ godfather2.exe.text+52D9D6: 83 C8 FF                       - or eax,-01
                   <Description>"select here"</Description>
                   <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">XREISDORF2_C85C9C1_888E2EF_v3:cuba_freeplay
 XFOWLER102_C8D726A_A11FA3D_v3:cuba_normal
+XFOWLER102_C8D72sA_A11FA3D_v3:cuba_abyss
 </DropDownList>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>String</VariableType>
