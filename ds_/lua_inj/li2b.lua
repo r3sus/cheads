@@ -1,3 +1,9 @@
+local msg
+
+local function printDw(data)
+print(string.format("%08X",data) )
+end
+
 local function bt2aob(data)
     local s = ""
     for i = 1,#data  do
@@ -32,13 +38,21 @@ local function findStringRefs(str)
  return l.y
 end
 
+local function findStringRef1(str)
+ local l = {}
+ l.x = findStringAdr(str)
+ l.x = int2aob(l.x)
+ l.x = aOBScanUnique("68 "..l.x)+0
+ return l.x
+end
+
 local function find1()
 
 local l = {}
-l.o = findStringRefs("\0print\0")[1]
+l.o = findStringRef1("\0print\0")
 for i=1,100 do
  l.tmp = readBytes(l.o+i,3,true)
- if bt2aob(l.tmp) == "C7 40 0C " then l.out=l.o+i break end
+ if bt2aob(l.tmp) == "C7 40 0C " then l.out=l.o+i; break; end
 end
 
 return l.out+3
@@ -48,7 +62,7 @@ local function findFunctionStart(o)
 local l={};l.o=o
 for i=1,100 do
  l.buf = readBytes(l.o-i-2,2,true)
- if bt2aob(l.buf) == "CC CC " then l.out=l.o-i break end
+ if bt2aob(l.buf) == "CC CC " then l.out=l.o-i; break; end
 end
 return l.out
 end
@@ -63,10 +77,6 @@ for i = 1,#l.x do l.y[i]=findFunctionStart(l.x[i]) end
 return l.y
 end
 
-local function printDw(data)
-print(string.format("%08X",data) )
-end
-
 local function printSwap()
 
 local l = {}
@@ -74,8 +84,10 @@ l.x = find1()
 l.x1 = readInteger(l.x)
 l.y = find2()
 l.i = l.y[2]
-if l.x1 == l.i then l.i = l.y[1];showMessage('restoring') else showMessage('patching') end
+l.m = 'relocat'
+if l.x1 == l.i then l.i = l.y[1];l.m = 'restor' end
 writeInteger(l.x,l.i)
+msg = msg .. 'print '..l.m..'ed\n'
 
 end
 
@@ -84,24 +96,25 @@ local function find3()
 local l = {}
 l.o = findStringAdr("end\nend\n") + 11
 l.a = "function debug_print(flag, str)\nend\nfunction debug_screenprint(flag, str)\nend\n"
-l.b = "local s = '_user/lua_inj/inj.lua'; loadfile(s); dofile(s);"
+l.b = "local s = '_user/lua_inj/_inj.lua'; loadfile(s); dofile(s);"
 l.c = readString(l.o,100)
 --print(l.c)
-l.d = l.b
-if l.c == l.b then l.d = l.a;showMessage('restoring') else showMessage('patching') end
+l.d = l.b; l.e = 'patch';
+if l.c == l.b then l.d = l.a;l.e = 'restor' end
 --writeString(l.o,l.d)
 l.d1 = stringToByteTable(l.d)
 table.insert(l.d1,0)
 writeBytes(l.o,l.d1)
-
+msg = msg .. 'string '..l.e..'ed\n'
 return
 end
 
 local function main()
 
+msg = ""
 printSwap()
 find3()
-showMessage('done')
+showMessage(msg..'done\n')
 
 end
 
