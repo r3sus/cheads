@@ -25,13 +25,6 @@ local function main()
   l.n = "godfather2.exe"
   l.n1 = '../../'..l.n
   ons(l.n1);
-  --[[
-  if messageDialog('launch game?', mtInformation,mbYes, mbNo)==mrYes then
-  createProcess(l.n1)
-  sleep(1000)
-  openProcess(l.n)
-  end
-  ]]--
 end
 
 main()

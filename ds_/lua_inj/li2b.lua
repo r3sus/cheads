@@ -20,10 +20,56 @@ local function str2aob(data)
     return bt2aob(stringToByteTable(data))
 end
 
+local function isF()
+return getMainForm().ProcessLabel.Caption=='Physical Memory'
+end
+
+local function msList2ar(AV_MS_List)
+
+local AV_D = {}
+
+for i=1,AV_MS_List.Count do
+AV_D[i] = tonumber(AV_MS_List[i-1],16);
+end
+
+AV_MS_List.deinitialize()
+AV_MS_List.destroy()
+
+return AV_D
+end
+
+local function aOBScanF(data)
+local AV_MS=createMemScan()
+
+AV_MS.firstScan(soExactValue, vtByteArray, '', data, '',
+0 ,-1 , '' ,fsmNotAligned ,'' ,true ,true, false, false);
+
+AV_MS.waitTillDone()
+
+local AV_MS_List=createFoundList(AV_MS)
+
+AV_MS_List.initialize()
+AV_MS.destroy()
+
+return msList2ar(AV_MS_List)
+end
+
+local function aOBScanFoP(data)
+local l = {}
+if isF() then return aOBScanF(data) end
+l.x = aOBScan(data)
+return msList2ar(l.x)
+end
+
+local function aOBScan1FoP(data)
+if isF() then return aOBScanF(data)[1] end
+return aOBScanUnique(data)
+end
+
 local function findStringAdr(str)
  local l = {}
  l.as = str2aob(str)
- l.adr = aOBScanUnique(l.as) + 1
+ l.adr = aOBScan1FoP(l.as) + 1
  return l.adr
 end
 
@@ -31,18 +77,15 @@ local function findStringRefs(str)
  local l = {}
  l.x = findStringAdr(str)
  l.x = int2aob(l.x)
- l.x = aOBScan("68 "..l.x)
- l.y = {}
- for i = 1,l.x.Count do l.y[i]=tonumber(l.x[i-1],16) end
- l.x.destroy()
- return l.y
+ l.x = aOBScanFoP("68 "..l.x)
+ return l.x
 end
 
 local function findStringRef1(str)
  local l = {}
  l.x = findStringAdr(str)
  l.x = int2aob(l.x)
- l.x = aOBScanUnique("68 "..l.x)+0
+ l.x = aOBScan1FoP("68 "..l.x)+0
  return l.x
 end
 
@@ -110,12 +153,16 @@ return
 end
 
 local function main()
-
+local l = {}
+l.n = "godfather2.exe"
+l.n1 = '../../'..l.n
 msg = ""
+l.pf = messageDialog('Patch File(Y) or RAM(N)?', mtInformation,mbYes, mbNo)==mrYes
+if l.pf then openFileAsProcess(l.n1,false,0x400000) end
 printSwap()
 find3()
+if l.pf then saveOpenedFile(l.n1) end
 showMessage(msg..'done\n')
-
 end
 
 main()

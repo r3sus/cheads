@@ -1,7 +1,7 @@
 local l = '[inj] : '
 print(l..'start')
 
-function pfs(fn,flag,str)
+local function pfs(fn,flag,str)
 local l = {}
 l.s = string.format( "[%s] : %s : %s",fn,str,tostring(flag) )
 print(l.s)
