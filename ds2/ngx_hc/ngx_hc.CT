@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"NG+ Hardcore 1"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : deadspace2.exe (paused)
+  Version: 
+  Date   : 2023-08-26
+  Author : user
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECTa,deadspace2.exe,8B 91 78 09 00 00) // should be unique
+
+INJECTa:
+mov edx,4
+  nop
+registersymbol(INJECTa)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECTa:
+  db 8B 91 78 09 00 00
+
+unregistersymbol(INJECTa)
+
+{
+// ORIGINAL CODE - INJECTION POINT: deadspace2.exe.text+6443F3
+
+deadspace2.exe.text+6443CB: 8B 8E 44 01 00 00        - mov ecx,[esi+00000144]
+deadspace2.exe.text+6443D1: C1 E9 06                 - shr ecx,06
+deadspace2.exe.text+6443D4: F6 C1 01                 - test cl,01
+deadspace2.exe.text+6443D7: 0F 84 B2 00 00 00        - je deadspace2.exe.text+64448F
+deadspace2.exe.text+6443DD: 8B 0D E4 C0 01 02        - mov ecx,[deadspace2.exe+1C1C0E4]
+deadspace2.exe.text+6443E3: 8B 50 34                 - mov edx,[eax+34]
+deadspace2.exe.text+6443E6: 85 C9                    - test ecx,ecx
+deadspace2.exe.text+6443E8: 74 1B                    - je deadspace2.exe.text+644405
+deadspace2.exe.text+6443EA: 83 B9 6C 09 00 00 03     - cmp dword ptr [ecx+0000096C],03
+deadspace2.exe.text+6443F1: 75 12                    - jne deadspace2.exe.text+644405
+// ---------- INJECTING HERE ----------
+deadspace2.exe.text+6443F3: 8B 91 78 09 00 00        - mov edx,[ecx+00000978]
+// ---------- DONE INJECTING  ----------
+deadspace2.exe.text+6443F9: 8B 0D 1C 03 F6 01        - mov ecx,[deadspace2.exe.data+33031C]
+deadspace2.exe.text+6443FF: 89 0D 20 03 F6 01        - mov [deadspace2.exe.data+330320],ecx
+deadspace2.exe.text+644405: 89 15 1C 03 F6 01        - mov [deadspace2.exe.data+33031C],edx
+deadspace2.exe.text+64440B: F3 0F 10 40 14           - movss xmm0,[eax+14]
+deadspace2.exe.text+644410: F3 0F 11 05 FC 02 F6 01  - movss [deadspace2.exe.data+3302FC],xmm0
+deadspace2.exe.text+644418: 8B 50 54                 - mov edx,[eax+54]
+deadspace2.exe.text+64441B: 89 15 3C 03 F6 01        - mov [deadspace2.exe.data+33033C],edx
+deadspace2.exe.text+644421: 8B 48 18                 - mov ecx,[eax+18]
+deadspace2.exe.text+644424: 89 0D 00 03 F6 01        - mov [deadspace2.exe.data+330300],ecx
+deadspace2.exe.text+64442A: 8B 50 1C                 - mov edx,[eax+1C]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
