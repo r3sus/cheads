@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337050846</ID>
+      <Description>"CP write msg"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Dead Space.exe
+  Version: 
+  Date   : 2024-10-21
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECT1,Dead Space.exe,89 4C 24 1C 8B 4E 20) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(msg)
+newmem:
+push eax
+push 0
+push msg
+push msg
+push 0
+call MessageBoxA
+pop eax
+
+code:
+  mov [esp+1C],ecx
+  mov ecx,[esi+20]
+  jmp return
+
+msg:
+db 'CP write' 00
+
+INJECT1:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT1)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT1:
+  db 89 4C 24 1C 8B 4E 20
+
+unregistersymbol(INJECT1)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Dead Space.exe.text+1D3CB1
+
+Dead Space.exe.text+1D3C86: 8B 10              - mov edx,[eax]
+Dead Space.exe.text+1D3C88: 8B C8              - mov ecx,eax
+Dead Space.exe.text+1D3C8A: 8B 82 7C 01 00 00  - mov eax,[edx+0000017C]
+Dead Space.exe.text+1D3C90: FF D0              - call eax
+Dead Space.exe.text+1D3C92: 84 C0              - test al,al
+Dead Space.exe.text+1D3C94: 0F 85 BA 00 00 00  - jne Dead Space.exe.text+1D3D54
+Dead Space.exe.text+1D3C9A: 8B 0D 04 61 F4 00  - mov ecx,["Dead Space.exe"+B46104]
+Dead Space.exe.text+1D3CA0: A1 F8 60 F4 00     - mov eax,["Dead Space.exe"+B460F8]
+Dead Space.exe.text+1D3CA5: 8B 15 FC 60 F4 00  - mov edx,["Dead Space.exe"+B460FC]
+Dead Space.exe.text+1D3CAB: 8B 1D 00 61 F4 00  - mov ebx,["Dead Space.exe"+B46100]
+// ---------- INJECTING HERE ----------
+Dead Space.exe.text+1D3CB1: 89 4C 24 1C        - mov [esp+1C],ecx
+// ---------- DONE INJECTING  ----------
+Dead Space.exe.text+1D3CB5: 8B 4E 20           - mov ecx,[esi+20]
+Dead Space.exe.text+1D3CB8: 3B C1              - cmp eax,ecx
+Dead Space.exe.text+1D3CBA: 89 0D F8 60 F4 00  - mov ["Dead Space.exe"+B460F8],ecx
+Dead Space.exe.text+1D3CC0: 8B 7E 24           - mov edi,[esi+24]
+Dead Space.exe.text+1D3CC3: 89 3D FC 60 F4 00  - mov ["Dead Space.exe"+B460FC],edi
+Dead Space.exe.text+1D3CC9: 8B 6E 28           - mov ebp,[esi+28]
+Dead Space.exe.text+1D3CCC: 89 2D 00 61 F4 00  - mov ["Dead Space.exe"+B46100],ebp
+Dead Space.exe.text+1D3CD2: 8B 6E 2C           - mov ebp,[esi+2C]
+Dead Space.exe.text+1D3CD5: 89 2D 04 61 F4 00  - mov ["Dead Space.exe"+B46104],ebp
+Dead Space.exe.text+1D3CDB: 75 12              - jne Dead Space.exe.text+1D3CEF
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337050843</ID>
+      <Description>"level restart (save equip)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Dead Space.exe
+  Version: 
+  Date   : 2024-10-20
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(FIND_RELVL,Dead Space.exe,83 89 90 00 00 00 02 C6) // should be unique
+
+registersymbol(FIND_RELVL)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+unregistersymbol(FIND_RELVL)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Dead Space.exe.text+1087
+
+Dead Space.exe.text+106C: 56                    - push esi
+Dead Space.exe.text+106D: 57                    - push edi
+Dead Space.exe.text+106E: 8B E9                 - mov ebp,ecx
+Dead Space.exe.text+1070: 74 28                 - je Dead Space.exe.text+109A
+Dead Space.exe.text+1072: A1 94 29 F6 00        - mov eax,["Dead Space.exe"+B62994]
+Dead Space.exe.text+1077: 85 C0                 - test eax,eax
+Dead Space.exe.text+1079: 74 06                 - je Dead Space.exe.text+1081
+Dead Space.exe.text+107B: 83 78 04 00           - cmp dword ptr [eax+04],00
+Dead Space.exe.text+107F: 75 19                 - jne Dead Space.exe.text+109A
+Dead Space.exe.text+1081: 8B 0D 84 29 F6 00     - mov ecx,["Dead Space.exe"+B62984]
+// ---------- INJECTING HERE ----------
+Dead Space.exe.text+1087: 83 89 90 00 00 00 02  - or dword ptr [ecx+00000090],02
+// ---------- DONE INJECTING  ----------
+Dead Space.exe.text+108E: C6 05 C5 20 F4 00 00  - mov byte ptr ["Dead Space.exe"+B420C5],00
+Dead Space.exe.text+1095: E8 16 B2 0E 00        - call Dead Space.exe.text+EC2B0
+Dead Space.exe.text+109A: E8 F1 0D 01 00        - call Dead Space.exe.text+11E90
+Dead Space.exe.text+109F: 8B 0D 68 29 F6 00     - mov ecx,["Dead Space.exe"+B62968]
+Dead Space.exe.text+10A5: 8A 81 39 05 00 00     - mov al,[ecx+00000539]
+Dead Space.exe.text+10AB: 33 F6                 - xor esi,esi
+Dead Space.exe.text+10AD: 3C 12                 - cmp al,12
+Dead Space.exe.text+10AF: 74 28                 - je Dead Space.exe.text+10D9
+Dead Space.exe.text+10B1: 0F B6 C0              - movzx eax,al
+Dead Space.exe.text+10B4: 83 F8 10              - cmp eax,10
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337050845</ID>
+          <Description>"RELVL"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[FIND_RELVL+9]:
+db 1
+//{$lua}writeByte('[FIND_RELVL+9]',1)
+[ENABLE]
+[DISABLE]
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337050844</ID>
+              <Description>"RELVL_b"</Description>
+              <LastState Value="00" RealAddress="00F420C5"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[FIND_RELVL+9]</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
