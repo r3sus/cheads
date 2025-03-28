@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1091</ID>
+      <Description>"dehook"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+USER32.SetWindowsHookExA:
+ret 10
+ 
+ 
+[DISABLE]
+USER32.SetWindowsHookExA:
+db 8B FF 55
+//code from here till the end of the code will be used to disable the cheat
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1080</ID>
+          <Description>"No description"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>USER32.SetWindowsHookExA </Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
