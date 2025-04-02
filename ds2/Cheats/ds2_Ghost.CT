@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>292</ID>
+      <Description>"ghostModeHook"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : deadspace2.exe
+  Version: 
+  Date   : 2021-08-22
+  Author : user
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(ghostModeHook,deadspace2.exe,8D 9B 00 00 00 00 8B 4C 24 20 8B 54 24 24) // should be unique
+
+registersymbol(ghostModeHook)
+
+define(ghostModeHook, ghostModeHook-10)
+
+//assert(ghostModeHook,74)
+
+ghostModeHook:
+db EB
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+ghostModeHook:
+db 74
+
+unregistersymbol(ghostModeHook)
+
+{
+// ORIGINAL CODE - INJECTION POINT: deadspace2.exe+B81C3A
+
+deadspace2.exe+B81C20: 8B CE              - mov ecx,esi
+deadspace2.exe+B81C22: E8 49 52 82 FF     - call deadspace2.exe+3A6E70
+deadspace2.exe+B81C27: 83 F8 FF           - cmp eax,-01
+deadspace2.exe+B81C2A: 74 30              - je deadspace2.exe+B81C5C
+deadspace2.exe+B81C2C: 50                 - push eax
+deadspace2.exe+B81C2D: 8B CE              - mov ecx,esi
+deadspace2.exe+B81C2F: E8 1C 52 82 FF     - call deadspace2.exe+3A6E50
+deadspace2.exe+B81C34: 8B 30              - mov esi,[eax]
+deadspace2.exe+B81C36: 85 F6              - test esi,esi
+deadspace2.exe+B81C38: 74 22              - je deadspace2.exe+B81C5C
+// ---------- INJECTING HERE ----------
+deadspace2.exe+B81C3A: 8D 9B 00 00 00 00  - lea ebx,[ebx+00000000]
+// ---------- DONE INJECTING  ----------
+deadspace2.exe+B81C40: 8B 4C 24 20        - mov ecx,[esp+20]
+deadspace2.exe+B81C44: 8B 54 24 24        - mov edx,[esp+24]
+deadspace2.exe+B81C48: 8B 06              - mov eax,[esi]
+deadspace2.exe+B81C4A: 51                 - push ecx
+deadspace2.exe+B81C4B: 52                 - push edx
+deadspace2.exe+B81C4C: 53                 - push ebx
+deadspace2.exe+B81C4D: 50                 - push eax
+deadspace2.exe+B81C4E: 8B CF              - mov ecx,edi
+deadspace2.exe+B81C50: E8 EB FB FF FF     - call deadspace2.exe+B81840
+deadspace2.exe+B81C55: 8B 76 04           - mov esi,[esi+04]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>293</ID>
+          <Description>"No description"</Description>
+          <LastState Value="EB" RealAddress="00F8237A"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>ghostModeHook</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>294</ID>
+      <Description>"No description"</Description>
+      <DropDownList>83 F8 FF 74:default
+83 F8 FF EB:jmp
+</DropDownList>
+      <LastState Value="83 F8 FF 74" RealAddress="0042CA71"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>4</ByteLength>
+      <Address>deadspace2.exe+2CA71</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>295</ID>
+      <Description>"No description"</Description>
+      <DropDownList>83 F8 FF 74:default
+83 F8 FF EB:jmp
+</DropDownList>
+      <LastState Value="83 F8 FF 74" RealAddress="0042CA71"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>4</ByteLength>
+      <Address>deadspace2.exe+2CA71</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
