@@ -1,5 +1,12 @@
-use dehook to make nohboard and YAKD (OSK software) work with desp games
+dehook CT
+
+hack to make NohBoard and YAKD input visualisers work with Dead Space games
 
 mechanism: stubs the USER32.SetWindowsHookExA, no side effects found
 
-usage: you can close CE after script launch
+usage:
+
+launch CT and apply script per game session, optionally close CE.
+toggle script to restore original behaviour
+
+for persistent effect, use DLL: https://github.com/r3sus/Resouls/ptde/nopsb/src/dehook
