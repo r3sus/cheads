@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Dead Space.exe
+  Version: 
+  Date   : 2026-07-20
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+luacall(openProcess("Dead Space.exe")) 
+aobscanmodule(INJECT_pul,Dead Space.exe,68 1C 45 00 00) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+label(script)
+label(end)
+
+newmem:
+
+code:
+  mov ecx,end
+  sub ecx,script
+  sub ecx,1
+  mov [esp+4],ecx
+  mov ecx, script
+  jmp return
+
+script:
+  db ' dofile("player_upgrades.lua")' 00
+end:
+
+INJECT_pul+10:
+  jmp short +4e
+  nop
+return:
+
+INJECT_pul+60:
+  jmp newmem
+
+registersymbol(INJECT_pul)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT_pul+10:
+  sar edi, 3
+INJECT_pul+60:
+  db cc cc cc cc cc
+
+unregistersymbol(INJECT_pul)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Dead Space.exe+1CDD54
+
+Dead Space.exe+1CDD40: 55              - push ebp
+Dead Space.exe+1CDD41: 8B EC           - mov ebp,esp
+Dead Space.exe+1CDD43: 83 E4 F8        - and esp,-08
+Dead Space.exe+1CDD46: 83 EC 0C        - sub esp,0C
+Dead Space.exe+1CDD49: 53              - push ebx
+Dead Space.exe+1CDD4A: 56              - push esi
+Dead Space.exe+1CDD4B: 8B F0           - mov esi,eax
+Dead Space.exe+1CDD4D: 57              - push edi
+Dead Space.exe+1CDD4E: 8B 7E 08        - mov edi,[esi+08]
+Dead Space.exe+1CDD51: 2B 7E 0C        - sub edi,[esi+0C]
+// ---------- INJECTING HERE ----------
+Dead Space.exe+1CDD54: 68 1C 45 00 00  - push 0000451C
+// ---------- DONE INJECTING  ----------
+Dead Space.exe+1CDD59: 56              - push esi
+Dead Space.exe+1CDD5A: B8 08 85 C7 00  - mov eax,"Dead Space.exe"+878508
+Dead Space.exe+1CDD5F: B9 28 2E E8 00  - mov ecx,"Dead Space.exe"+A82E28
+Dead Space.exe+1CDD64: C1 FF 03        - sar edi,03
+Dead Space.exe+1CDD67: E8 B4 DE 20 00  - call "Dead Space.exe"+3DBC20
+Dead Space.exe+1CDD6C: 8B D8           - mov ebx,eax
+Dead Space.exe+1CDD6E: 83 C4 08        - add esp,08
+Dead Space.exe+1CDD71: 85 DB           - test ebx,ebx
+Dead Space.exe+1CDD73: 75 2C           - jne "Dead Space.exe"+1CDDA1
+Dead Space.exe+1CDD75: 8B 46 08        - mov eax,[esi+08]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
