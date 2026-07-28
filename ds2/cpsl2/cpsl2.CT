@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>82762</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : deadspace2.exe (paused)
+  Version: 
+  Date   : 2026-07-24
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECT2,deadspace2.exe,8B 4C 24 0C 50 8B 44 24 14 50 51 8B) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  push eax
+  push ebx
+
+  mov esi,INJECT2
+  add esi,81
+  sub esi,0x4
+  mov esi,[esi]
+  sub esi,0xC
+
+  xor ebx,ebx
+
+loop1:
+  mov eax,[esi+ebx*4]
+  cmp eax,[CP0+ebx*4]
+  jne code
+  inc ebx
+  cmp ebx,4
+  jne loop1
+
+  xor ebx,ebx
+
+loop2:
+  mov eax,[CP1+ebx*4]
+  mov [esi+ebx*4],eax
+  inc ebx
+  cmp ebx,4
+  jne loop2
+
+code:
+  pop ebx
+  pop eax
+  pop esi
+  ret
+  jmp return
+
+CP0:
+  db 0B C5 C9 4B 2A 59 8B C0 43 45 4E 54 4B 4F 57 53
+CP1:
+  db 94 19 CB 36 15 E4 63 66 50 41 54 45 4C 31 30 32
+
+INJECT2+93-12:
+  jmp newmem
+return:
+registersymbol(INJECT2)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT2+93-12:
+  pop esi
+  ret
+
+unregistersymbol(INJECT2)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: deadspace2.exe+775312
+
+deadspace2.exe+7752F0: A3 08 EC 08 02     - mov [deadspace2.exe+1C8EC08],eax
+deadspace2.exe+7752F5: EB 06              - jmp deadspace2.exe+7752FD
+deadspace2.exe+7752F7: 89 3D 08 EC 08 02  - mov [deadspace2.exe+1C8EC08],edi
+deadspace2.exe+7752FD: 6A 3C              - push 3C
+deadspace2.exe+7752FF: E8 A2 E9 88 FF     - call deadspace2.exe+3CA6
+deadspace2.exe+775304: 8B F0              - mov esi,eax
+deadspace2.exe+775306: 83 C4 04           - add esp,04
+deadspace2.exe+775309: 3B F7              - cmp esi,edi
+deadspace2.exe+77530B: 74 1E              - je deadspace2.exe+77532B
+deadspace2.exe+77530D: E8 F0 E7 88 FF     - call deadspace2.exe+3B02
+// ---------- INJECTING HERE ----------
+deadspace2.exe+775312: 8B 4C 24 0C        - mov ecx,[esp+0C]
+// ---------- DONE INJECTING  ----------
+deadspace2.exe+775316: 50                 - push eax
+deadspace2.exe+775317: 8B 44 24 14        - mov eax,[esp+14]
+deadspace2.exe+77531B: 50                 - push eax
+deadspace2.exe+77531C: 51                 - push ecx
+deadspace2.exe+77531D: 8B CE              - mov ecx,esi
+deadspace2.exe+77531F: E8 1C A6 A7 00     - call deadspace2.exe+11EF940
+deadspace2.exe+775324: A3 04 EC 08 02     - mov [deadspace2.exe+1C8EC04],eax
+deadspace2.exe+775329: EB 06              - jmp deadspace2.exe+775331
+deadspace2.exe+77532B: 89 3D 04 EC 08 02  - mov [deadspace2.exe+1C8EC04],edi
+deadspace2.exe+775331: 6A 3C              - push 3C
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
