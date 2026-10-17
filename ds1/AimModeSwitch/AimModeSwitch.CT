@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337050890</ID>
+      <Description>"FindAimMode"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Dead Space.exe
+  Version: 
+  Date   : 2026-10-17
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+ 
+aobscanmodule(FindAimMode,Dead Space.exe,8B 44 A9 04 83 C5 01) // should be unique
+label(AimMode)
+registersymbol(AimMode)
+
+[FindAimMode-60+a8+2]:
+  AimMode:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+unregistersymbol(AimMode)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Dead Space.exe+1C60
+
+Dead Space.exe+1C3D: 50                 - push eax
+Dead Space.exe+1C3E: FF 54 24 38        - call dword ptr [esp+38]
+Dead Space.exe+1C42: 83 C4 04           - add esp,04
+Dead Space.exe+1C45: E9 69 FD FF FF     - jmp "Dead Space.exe"+19B3
+Dead Space.exe+1C4A: B8 90 B2 C5 00     - mov eax,"Dead Space.exe"+85B290
+Dead Space.exe+1C4F: 8B CE              - mov ecx,esi
+Dead Space.exe+1C51: E8 0A F9 FF FF     - call "Dead Space.exe"+1560
+Dead Space.exe+1C56: 85 C0              - test eax,eax
+Dead Space.exe+1C58: 75 3A              - jne "Dead Space.exe"+1C94
+Dead Space.exe+1C5A: 8B 0D B8 20 F4 00  - mov ecx,["Dead Space.exe"+B420B8]
+// ---------- INJECTING HERE ----------
+Dead Space.exe+1C60: 8B 44 A9 04        - mov eax,[ecx+ebp*4+04]
+// ---------- DONE INJECTING  ----------
+Dead Space.exe+1C64: 83 C5 01           - add ebp,01
+Dead Space.exe+1C67: 83 C3 01           - add ebx,01
+Dead Space.exe+1C6A: 83 C7 01           - add edi,01
+Dead Space.exe+1C6D: 85 C0              - test eax,eax
+Dead Space.exe+1C6F: 0F 84 42 FD FF FF  - je "Dead Space.exe"+19B7
+Dead Space.exe+1C75: 68 80 00 00 00     - push 00000080
+Dead Space.exe+1C7A: 50                 - push eax
+Dead Space.exe+1C7B: 68 00 38 EB 00     - push "Dead Space.exe"+AB3800
+Dead Space.exe+1C80: E8 4B 72 4F 00     - call "Dead Space.exe"+4F8ED0
+Dead Space.exe+1C85: 83 C4 0C           - add esp,0C
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337050892</ID>
+          <Description>"AimModeSwitch (F3) (highlight and ctrl+h to change)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Dead Space.exe
+  Version: 
+  Date   : 2026-10-17
+  Author : 1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+AimMode:
+  db 0
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+AimMode:
+  db 1
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>114</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
